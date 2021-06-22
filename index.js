@@ -15,8 +15,7 @@ class CountdownTimer{
         this.targetDate=targetDate;
     };
     start() {
-        setInterval(() => {
-            
+            const id = setInterval(() => {
             const currentTime = Date.now();
             const deltaTime = this.targetDate - currentTime;
             const timeComponents = getTimeComponents(deltaTime);
@@ -24,13 +23,16 @@ class CountdownTimer{
             document.querySelector('[data-value="hours"]').textContent = timeComponents.hours;
             document.querySelector('[data-value="mins"]').textContent = timeComponents.mins;
             document.querySelector('[data-value="secs"]').textContent = timeComponents.secs;
-        }, 1000);
+             if (deltaTime<0) {
+            clearInterval(id);
+            } 
+      }, 1000); 
     };
 };
 
 const timer = new CountdownTimer({
   selector: '#timer-1',
-  targetDate: new Date('Jul 17, 2021'),
+  targetDate: new Date('Jun 22 2021 23:09:00'),
 });
 
 timer.start();
