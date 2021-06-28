@@ -28,7 +28,7 @@ class CountdownTimer{
             refs.hours.textContent = timeComponents.hours;
             refs.mins.textContent = timeComponents.mins;
             refs.secs.textContent = timeComponents.secs;
-                if (deltaTime < 0) {
+                if (deltaTime <= 0) {
                 refs.days.textContent = "00";
                 refs.hours.textContent = "00";
                 refs.mins.textContent = "00";
